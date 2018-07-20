@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <title>Table</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<script src="http://code.jquery.com/jquery-2.1.0.js"></script>
+<div id="users">
+<script>
+var output = "<table>";
+output+="<tr>";
+	output+="<td>id</td>";
+	output+="<td>firstName</td>";
+	output+="<td>lastName</td>";
+	output+="<td>email</td>";
+	output+="<td>phone</td>";
+output+="</tr>";
+
+  $.getJSON('data/data.json', function(data) {
+	for (var i in data) {
+			output+="<tr>";
+            output+="<td>"+data[i].id+"</td>";
+			output+="<td>" + data[i].firstName + "</td>"; 
+			output+="<td>" + data[i].lastName + "</td>"; 
+			output+="<td>" + data[i].email+"</td>";
+			output+="<td>"+data[i].phone+"</td>";
+			
+			output+="</tr>";
+        }
+        document.getElementById("users").innerHTML+=output;
+		});
+</script>				
+</div>
+</body>
+</html>
